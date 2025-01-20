@@ -1,0 +1,2 @@
+class ModelPresenterEntity:
+    pass

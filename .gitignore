@@ -169,3 +169,13 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Model files
+models/
+
+# Enviroment files
+enviroments-user.sh.example
+enviroments-user.sh
+
+# Editor settings
+.vscode/

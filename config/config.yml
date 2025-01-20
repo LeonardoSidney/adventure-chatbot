@@ -1,0 +1,8 @@
+# Project config file
+
+# Folders location
+folders:
+- name: "models"
+  location: "models/"
+- name: "example"
+  location: "example/"
