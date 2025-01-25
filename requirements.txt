@@ -1,5 +1,6 @@
-gradio
 transformers
 accelerate
 huggingface_hub
 PyYAML
+fastapi[standard]
+reactpy

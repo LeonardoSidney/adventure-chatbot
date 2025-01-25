@@ -1,6 +1,5 @@
-import gradio as gr
 from typing import Any
-from adventure_chatbot import ModelController, ModelInfo, App
+from adventure_chatbot import ModelController, ModelInfo
 
 
 class Main:
@@ -10,7 +9,6 @@ class Main:
             model_path="models/",
         )
         self.model = ModelController(self.modelInfo)
-        self.app = App()
 
     def execute(self):
         if not self.model.load():
@@ -24,6 +22,3 @@ class Main:
         ]
         result: Any = self.model.generate(messages)
         print(result[0]["generated_text"][-1])
-
-    def startApp(self) -> gr.Blocks:
-        return self.app.execute()

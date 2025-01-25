@@ -1,27 +1,23 @@
-from argparse import Namespace
+import uvicorn
+import uvicorn.server
+from adventure_chatbot import Main, ArgsHelper, Server
 
-import gradio as gr
-from adventure_chatbot import Main, ArgsHelper
-
-def start_gradio() -> gr.Blocks:
-    main = Main()
-    adventure = main.startApp()
-    return adventure
-
+argsHelper = ArgsHelper()
+args = argsHelper.getArgs()
 
 def start_console():
     main = Main()
     main.execute()
 
-def start_server(args: Namespace):
-    # start_gradio()
-    start_console()
-    
+server = Server(args)
+server.execute()
+app = server.http
+
 if __name__ == "__main__":
-    argsHelper = ArgsHelper()
-    args = argsHelper.get_args()
-    start_server(args)
-    # adventure = start_gradio()
-    # with gr.Blocks() as demo:
-    #     adventure.render()
-    # demo.launch()
+    config = uvicorn.Config(app, host=args.host, port=args.port)
+    if args.reload:
+        config = uvicorn.Config("server:app", host=args.host, port=args.port, reload=args.reload)
+
+    uvsrv = uvicorn.Server(config)
+    uvsrv.run()
+    # start_console()

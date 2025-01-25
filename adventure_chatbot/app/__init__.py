@@ -1,5 +1,5 @@
-from adventure_chatbot.app.App import App
+from adventure_chatbot.app.home.HomePage import HomePage
 
 __all__ = [
-    "App"
+    'HomePage',
 ]

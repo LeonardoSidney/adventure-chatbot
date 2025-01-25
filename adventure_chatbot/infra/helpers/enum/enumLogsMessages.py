@@ -1,12 +1,8 @@
 from enum import Enum
 
-class EnumMessagesPrefix(Enum):
-    INFO = "[INFO]"
-    WARNING = "[WARNING]"
-    ERROR = "[ERROR]"
-
-class EnumColorMessages(Enum):
-    INFO = "\033[1;32;40m"
-    WARNING = "\033[1;33;40m"
-    ERROR = "\033[1;31;40m"
+class EnumColorMessages(str, Enum):
+    INFO = "\x1b[22m\x1b[32m"
+    DEBUG = "\x1b[1m\x1b[36m"
+    WARNING = "\x1b[1m\x1b[33m"
+    ERROR = "\x1b[1m\x1b[31m"
     

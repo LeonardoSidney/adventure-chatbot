@@ -2,8 +2,9 @@ from adventure_chatbot.infra.types import ModelInfo, configType, configFileType
 
 from adventure_chatbot.infra.helpers import (
     EnumModelStrings,
-    ArgsHelper,
     EnumModelTypes,
+    ArgsHelper,
+    LoggerHelper,
 )
 
 from adventure_chatbot.infra.repository import (
@@ -14,6 +15,7 @@ from adventure_chatbot.infra.repository import (
 from adventure_chatbot.entities import (
     HubEntity,
     ModelEntity,
+    RouterEntity
 )
 
 from adventure_chatbot.interfaces import (
@@ -26,9 +28,8 @@ from adventure_chatbot.adapters.services import (
     ModelLoaderServices,
     HuggingFaceServices,
     FolderServices,
+    SettingsServices,
 )
-
-from adventure_chatbot.adapters.services import SettingsServices
 
 from adventure_chatbot.adapters.gateway import HuggingFaceGateway, SettingsGateway
 
@@ -38,11 +39,14 @@ from adventure_chatbot.adapters.controllers import (
     ModelController,
     ModelLoaderController,
     SettingsController,
+    HomeController,
 )
 
-from adventure_chatbot.app import App
-
 from adventure_chatbot.Main import Main
+
+from adventure_chatbot.infra.http import ServerHttp
+
+from adventure_chatbot.infra.server.Server import Server
 
 __all__ = [
     "configType",
@@ -50,11 +54,13 @@ __all__ = [
     "ModelInfo",
     "EnumModelStrings",
     "EnumModelTypes",
+    "ArgsHelper",
+    "LoggerHelper",
     "FileRepository",
     "FolderRepository",
-    "ArgsHelper",
     "ModelEntity",
     "HubEntity",
+    "RouterEntity",
     "ModelTransformers",
     "FileServices",
     "ModelServices",
@@ -69,6 +75,8 @@ __all__ = [
     "ModelController",
     "ModelLoaderController",
     "SettingsController",
-    "App",
-    "Main"
+    "HomeController",
+    "Main",
+    "ServerHttp",
+    "Server"
 ]
